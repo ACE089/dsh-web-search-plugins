@@ -1,0 +1,32 @@
+# Dependencies and generated archives
+node_modules/
+dist/
+*.tgz
+
+# Editor and operating system metadata
+.idea/
+.DS_Store
+
+# Local environment, credentials and private keys
+.env
+.env.*
+!.env.example
+.envrc
+.npmrc
+credentials.json
+credentials.local.*
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Local DSH profiles and configuration
+.dsh/
+/profiles/
+/settings.yaml
+*.local.yml
+*.local.yaml
+*.local.json
+
+# Logs
+*.log

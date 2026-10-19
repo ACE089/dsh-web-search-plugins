@@ -1,0 +1,24 @@
+{
+  "name": "dsh-web-search-plugins",
+  "version": "1.0.0",
+  "license": "MIT",
+  "private": true,
+  "description": "DSH 智谱联网搜索与主动联网查证插件源码及打包脚本",
+  "type": "module",
+  "engines": {
+    "node": ">=22",
+    "npm": ">=10"
+  },
+  "scripts": {
+    "build": "npm run build:policy && npm run build:glm",
+    "build:policy": "node scripts/build-web-search-policy-package.mjs",
+    "build:glm": "node scripts/build-web-search-glm-package.mjs",
+    "test": "node --test tests/web-search-glm.test.mjs"
+  },
+  "devDependencies": {
+    "@deepseek-ai/cosmokit": "1.8.5",
+    "@deepseek-ai/schemastery": "3.18.4",
+    "@modelcontextprotocol/client": "2.0.0",
+    "esbuild": "0.28.1"
+  }
+}

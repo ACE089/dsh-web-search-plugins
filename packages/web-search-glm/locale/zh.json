@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "智谱联网搜索",
+    "description": "将 DSH 的 web_search 后端切换为 GLM Coding Plan 搜索 MCP，独立配置智谱密钥。"
+  }
+}

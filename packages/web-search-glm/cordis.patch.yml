@@ -1,0 +1,14 @@
+# Bundle selection changes only the backend of the existing web_search tool.
+# DSH replaces a row's whole config, so preserve its default fetch provider.
+- id: web
+  config:
+    searchProvider: glm-coding-plan
+    fetchProvider: http
+
+- insert:
+    - id: web-search-glm
+      name: dsh-plugin-web-search-glm
+      config:
+        apiKeyEnv: ZHIPU_API_KEY
+        endpoint: https://open.bigmodel.cn/api/mcp/web_search_prime/mcp
+        timeoutMs: 55000

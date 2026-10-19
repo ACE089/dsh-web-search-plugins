@@ -1,0 +1,11 @@
+# 开发用模板：先复制为 web-search-policy.local.yml，再将下面的占位符
+# 替换为自己电脑上 web-search-policy.mjs 的绝对路径。不要在此模板保存本机配置。
+# 从仓库根目录运行：
+# dsh --profile headless --patch "$PWD/plugins/web-search-policy.local.yml" "你的问题"
+# Desktop 安装及手动挂载方法见 web-search-policy.README.md。
+- insert:
+    - id: web-search-policy
+      name: '/ABSOLUTE/PATH/TO/dsh-web-search-plugins/plugins/web-search-policy.mjs'
+      config:
+        sectionOrder: 6400
+        enhanceToolDescriptions: true

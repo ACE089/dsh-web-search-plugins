@@ -1,0 +1,6 @@
+- insert:
+    - id: web-search-policy
+      name: dsh-plugin-web-search-policy
+      config:
+        sectionOrder: 6400
+        enhanceToolDescriptions: true
