@@ -30,7 +30,9 @@ test('real DSH web service routes only to GLM, keeps web_search/fetch and works 
   await ctx.plugin(ToolWeb, { fetch: true })
   const originalNames = (await ctx.tools.schemas()).map(tool => tool.name)
   const fiber = await ctx.plugin(plugin, { apiKey: 'fixture-key', endpoint: fixture.endpoint })
-  const policy = await import(new URL('./web-search-policy.mjs', import.meta.url).href)
+  const policy = await import(process.argv[4]
+    ? pathToFileURL(resolve(process.argv[4])).href
+    : new URL('./web-search-policy.mjs', import.meta.url).href)
   await ctx.plugin(policy, {})
   const assembly = await ctx.systemPrompt.assemble()
   assert.deepEqual(assembly.tools.map(tool => tool.name).sort(), originalNames.sort())

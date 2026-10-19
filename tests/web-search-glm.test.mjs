@@ -2,8 +2,13 @@
 // Every credential below is a deliberately fake fixture value.
 import assert from 'node:assert/strict'
 import { test } from 'node:test'
-import * as plugin from '../packages/web-search-glm/index.mjs'
+import { resolve } from 'node:path'
+import { pathToFileURL } from 'node:url'
 import { results, tools, startMcpFixture } from './fixtures/glm-mcp.mjs'
+
+const plugin = await import(process.env.DSH_GLM_ENTRY
+  ? pathToFileURL(resolve(process.env.DSH_GLM_ENTRY)).href
+  : new URL('../packages/web-search-glm/index.mjs', import.meta.url).href)
 
 const provider = (fixture, options = {}) => new plugin.GlmSearchProvider(() => ({ apiKey: 'fixture-key', endpoint: fixture.endpoint, timeoutMs: 3000, ...options }))
 

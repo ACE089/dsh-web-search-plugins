@@ -1,6 +1,6 @@
 {
   "name": "dsh-plugin-web-search-glm",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "description": "使用智谱 GLM Coding Plan 搜索 MCP 替换 DSH 默认 DeepSeek 联网搜索。",
   "private": true,
@@ -13,7 +13,7 @@
     "./locale/*.json": "./locale/*.json"
   },
   "files": ["index.mjs", "cordis.patch.yml", "locale/*.json", "README.md", "LICENSE", "THIRD_PARTY_NOTICES.md"],
-  "peerDependencies": { "@deepseek-ai/dsh": "0.2.0-rc.2" },
+  "peerDependencies": { "@deepseek-ai/dsh": "0.2.1-rc.2" },
   "peerDependenciesMeta": { "@deepseek-ai/dsh": { "optional": true } },
   "dsh": { "bundle": { "patch": "./cordis.patch.yml" } }
 }

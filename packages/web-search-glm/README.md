@@ -1,8 +1,8 @@
 # 智谱联网搜索（web-search-glm）
 
-适配 DeepSeek Harness Desktop **0.2.0-rc.2**。将现有 `web_search` 的搜索后端切到智谱 GLM Coding Plan Search MCP。聊天模型可以继续使用原来的厂商；搜索不再调用 DeepSeek 的辅助 Messages 接口。
+适配 DeepSeek Harness Desktop **0.2.1-rc.2**。将现有 `web_search` 的搜索后端切到智谱 GLM Coding Plan Search MCP。聊天模型可以继续使用原来的厂商；搜索不再调用 DeepSeek 的辅助 Messages 接口。
 
-本插件 `1.0.0` 仅面向上述旧版 Desktop，不适用于当前已升级的 DSH。新版适配将通过后续插件版本提供。
+本插件 `1.0.1` 适配上述 Desktop；旧包 `1.0.0` 锁定 `0.2.0-rc.2`，会被新版的兼容性检查拒绝。已安装旧包时，在插件管理器中升级到本版，再确认启用状态；原有配置和凭据沿用同一插件身份。
 
 ## 插件的作用
 
@@ -14,7 +14,7 @@ DSH 的聊天模型和联网搜索后端是两套独立配置。本插件注册 
 
 ## 安装与配置
 
-1. 从本仓库的 Releases 下载 `dsh-plugin-web-search-glm-1.0.0.tgz`。在 Desktop「插件 → 添加插件」中选择下载的文件，或粘贴该文件在自己电脑上的绝对路径；安装后立即启用。只有界面提示时才重启。Release 尚未发布时，可使用本地构建生成的同名包。
+1. 从本仓库的 Releases 下载 `dsh-plugin-web-search-glm-1.0.1.tgz`。在 Desktop「插件 → 添加插件」中选择下载的文件，或粘贴该文件在自己电脑上的绝对路径；安装后立即启用。只有界面提示时才重启。Release 尚未发布时，可使用本地构建生成的同名包。
 2. 打开「设置 → 插件 → 插件配置」，找到 `web-search-glm`（或「智谱联网搜索」）。在 `apiKey` 填写智谱 **Coding Plan** 的 API Key 并保存。不要将密钥填入 DeepSeek 搜索配置。
 3. 也可以将 `apiKeyEnv` 指向已有 DSH 凭据（默认 `ZHIPU_API_KEY`），通过配置页面的凭据输入保存。仅在没有 DSH 凭据服务时才回退到启动环境；Finder 启动的桌面应用通常不会继承终端临时 export。
 4. 发起新请求，例如「请联网搜索智谱最新公告，并附上来源链接」。返回结果应包含可点击的标题、摘要和 URL。
@@ -71,9 +71,11 @@ npm run build:glm
 npm test
 ```
 
-输出为 `dist/dsh-plugin-web-search-glm-1.0.0.tgz`。构建只使用本仓库及其锁定的公开 npm 依赖，无需 `deepseek-harness` 源码或 DSH 安装。官方 MCP Client 与配置 schema 已打入单文件，安装时不需要额外下载运行依赖，不含任何 API Key。第三方许可见 `THIRD_PARTY_NOTICES.md`。
+输出为 `dist/dsh-plugin-web-search-glm-1.0.1.tgz`。构建只使用本仓库及其锁定的公开 npm 依赖，无需 `deepseek-harness` 源码或 DSH 安装。官方 MCP Client 与配置 schema 已打入单文件，安装时不需要额外下载运行依赖，不含任何 API Key。第三方许可见 `THIRD_PARTY_NOTICES.md`。
 
-验证使用临时 profile 和本地 MCP fixture，检查 Desktop 同版 Loader、provider 路由、参数/结果、取消、超时与错误处理。没有有效智谱密钥时，这些检查不等于真实套餐的在线调用验收；安装后保存自己的 Key 再进行一次实际搜索即可确认账户链路。
+验证使用临时 profile 和本地 MCP fixture，覆盖 Desktop 同版 Loader、provider 路由、参数/结果、取消、超时与错误处理。目前主要由维护者在本地环境完成，范围有限，严谨性仍有不足；尚未完成真实智谱账户、多平台及长期使用场景下的系统验证，不能作为完整兼容性或稳定性保证。
+
+欢迎在自己的本地项目中验证实际表现。如遇到问题，或有改进建议，欢迎通过仓库 Issues 反馈，一起探讨。反馈时请勿附带 API Key 或未经脱敏的配置和日志。
 
 ## 许可证
 

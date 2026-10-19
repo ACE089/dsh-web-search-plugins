@@ -1,8 +1,8 @@
 {
   "name": "dsh-plugin-web-search-policy",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
-  "description": "主动联网查证：强化搜索触发条件、页面读取与来源引用，适配 DSH Desktop 0.2.0-rc.2",
+  "description": "主动联网查证：强化搜索触发条件、页面读取与来源引用，适配 DSH Desktop 0.2.1-rc.2",
   "private": true,
   "type": "module",
   "main": "./index.mjs",
@@ -19,7 +19,7 @@
     "THIRD_PARTY_NOTICES.md"
   ],
   "peerDependencies": {
-    "@deepseek-ai/dsh": "0.2.0-rc.2"
+    "@deepseek-ai/dsh": "0.2.1-rc.2"
   },
   "peerDependenciesMeta": {
     "@deepseek-ai/dsh": {

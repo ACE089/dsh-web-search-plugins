@@ -145,11 +145,23 @@ test('native tool descriptions retain the full policy when a deployment supplies
   assert.match(webDescription(assembly), /lean toward checking/)
 })
 
-test('hybrid native and SDK presentation carries the full policy once', async t => {
-  const { ctx, baseline } = await fixture(t, {}, {}, 'both')
-  const assembly = await ctx.systemPrompt.assemble()
-  assert.match(webDescription(assembly), /You MUST verify/)
-  assert.equal(sdk(assembly), sdk(baseline))
+test('scoped PTC presentation carries policy without changing native agents', async t => {
+  const { ctx } = await fixture(t)
+  ctx.provide('ptcRuntime', { language: 'typescript' })
+  const native = await ctx.systemPrompt.assemble()
+  const key = {}
+  const scope = createScope(ctx, key)
+  t.after(() => scope.dispose())
+  await scope.ctx.plugin({ name: 'test-ptc-presentation', inject: ['tools'], apply(inner) {
+    inner.tools.presentAs('ptc')
+  } })
+  const assembly = await ctx.systemPrompt.assemble({ scope: key })
+  assert.deepEqual(assembly.tools.map(tool => tool.name), ['run_code'])
+  assert.match(sdk(assembly), /You MUST verify/)
+  assert.equal(sdk(assembly).split('## Web verification rules for SDK functions').length, 2)
+  assert.deepEqual(await ctx.systemPrompt.assemble(), native)
+  assert.match(webDescription(native), /You MUST verify/)
+  assert.equal(sdk(native), '')
 })
 
 test('the original web search executor still returns provider evidence', async t => {

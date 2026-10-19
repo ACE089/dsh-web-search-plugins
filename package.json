@@ -1,6 +1,6 @@
 {
   "name": "dsh-web-search-plugins",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "private": true,
   "description": "DSH 智谱联网搜索与主动联网查证插件源码及打包脚本",

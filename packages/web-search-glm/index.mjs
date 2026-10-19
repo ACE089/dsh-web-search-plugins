@@ -24519,7 +24519,7 @@ var GlmSearchProvider = class {
         } }));
         return new Response(bounded, { status: response.status, statusText: response.statusText, headers: response.headers });
       };
-      client = new Client({ name: "dsh-plugin-web-search-glm", version: "1.0.0" }, {
+      client = new Client({ name: "dsh-plugin-web-search-glm", version: "1.0.1" }, {
         capabilities: {},
         listMaxPages: 8,
         versionNegotiation: { mode: "legacy" }

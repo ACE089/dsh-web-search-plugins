@@ -1,8 +1,8 @@
 # 主动联网查证插件
 
-包名：`dsh-plugin-web-search-policy`；插件版本：`1.0.0`；目标桌面版：DeepSeek Harness Desktop `0.2.0-rc.2`。
+包名：`dsh-plugin-web-search-policy`；插件版本：`1.0.1`；目标桌面版：DeepSeek Harness Desktop `0.2.1-rc.2`。
 
-本插件 `1.0.0` 仅面向上述旧版 Desktop，不适用于当前已升级的 DSH。新版适配将通过后续插件版本提供。
+本插件 `1.0.1` 适配上述 Desktop；旧包 `1.0.0` 锁定 `0.2.0-rc.2`，会被新版的兼容性检查拒绝。已安装旧包时，在插件管理器中升级到本版，再确认启用状态；原有配置和凭据沿用同一插件身份。
 
 ## 插件的作用
 
@@ -14,7 +14,7 @@
 
 ## 手动安装
 
-1. 从本仓库的 Releases 下载 `dsh-plugin-web-search-policy-1.0.0.tgz`。Release 尚未发布时，可从仓库根目录运行 `npm run build:policy`，使用 `dist/` 中生成的同名包。
+1. 从本仓库的 Releases 下载 `dsh-plugin-web-search-policy-1.0.1.tgz`。Release 尚未发布时，可从仓库根目录运行 `npm run build:policy`，使用 `dist/` 中生成的同名包。
 2. 打开 DSH Desktop，在侧边栏进入「插件」，点击「添加插件」。选择下载的文件，或将该文件在自己电脑上的绝对路径完整粘贴到安装输入框，不要额外添加引号。
 3. 点击「安装」，完成后点击「立即启用」。如果界面提示需要重启，完全退出 DSH Desktop 后重新打开。
 4. 在插件列表确认该组合包已启用。停用或卸载可在同一插件页面操作。
@@ -48,7 +48,11 @@ npm ci
 npm run build:policy
 ```
 
-输出为 `dist/dsh-plugin-web-search-policy-1.0.0.tgz`。Policy 的实现是自包含 ESM，构建脚本复制源码并生成安装包，无需 DSH 源码、运行时安装或真实密钥。与实际 Desktop 工具注册表及 SDK 的集成检查使用已安装的目标版本应用执行，命令见源码仓库的 `docs/development.md`。
+输出为 `dist/dsh-plugin-web-search-policy-1.0.1.tgz`。Policy 的实现是自包含 ESM，构建脚本复制源码并生成安装包，无需 DSH 源码、运行时安装或真实密钥。与实际 Desktop 工具注册表及 SDK 的集成检查使用已安装的目标版本应用执行，命令见源码仓库的 `docs/development.md`。
+
+目前的验证主要由维护者在本地环境完成，范围有限，严谨性仍有不足；尚未完成不同模型、平台与长期使用场景下的系统验证，也没有对主动搜索效果做严格对照评测，不能作为完整兼容性、稳定性或效果保证。
+
+欢迎在自己的本地项目中验证实际表现。如遇到问题，或有改进建议，欢迎通过仓库 Issues 反馈，一起探讨。反馈时请勿附带凭据或未经脱敏的配置和日志。
 
 ## 包内容
 
